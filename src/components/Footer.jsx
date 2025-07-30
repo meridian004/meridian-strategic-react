@@ -19,15 +19,16 @@ export default function Footer() {
             technology and ESG‑conscious innovation.
           </p>
           {/* Corporate information from official filings */}
-          <div className="mt-4 text-gray-500 space-y-1">
+          <div className="mt-4 text-gray-300 space-y-1">
             <p>Meridian Strategic Resources, LLC</p>
-            <p>EIN: 39‑3020645</p>
-            <p>Formed: Jul 3 2025 (CA)</p>
+            <p>EIN: 39‑3020645</p>
+            <p>Formed: Jul 3 2025 (CA)</p>
           </div>
-          <div className="mt-3 space-y-1 text-gray-500">
-            <p>UEI: QWERT1234</p>
-            <p>CAGE: 1A2B3</p>
-            <p>SDVOSB Certified</p>
+          <div className="mt-3 space-y-1 text-gray-300">
+            {/* Trust and certification identifiers – consider replacing text with official SVG seals */}
+            <p>UEI: QWERT1234</p>
+            <p>CAGE: 1A2B3</p>
+            <p>SDVOSB Certified</p>
           </div>
         </div>
         <div>
@@ -56,9 +57,23 @@ export default function Footer() {
             8175 Limonite Avenue STE A<br />
             Riverside, CA 92509
           </p>
-          <p className="text-gray-400 mt-2">Phone: (951) 636‑1145</p>
-          <p className="text-gray-400">Alt: (844) 674‑7577</p>
-          <p className="text-gray-400 mt-2">info@meridianstrategic.io</p>
+          <p className="text-gray-400 mt-2">
+            Phone:&nbsp;
+            <a href="tel:+19516361145" className="hover:text-emerald underline focus:outline-none focus:ring-emerald">
+              (951) 636‑1145
+            </a>
+          </p>
+          <p className="text-gray-400">
+            Alt:&nbsp;
+            <a href="tel:+18446747577" className="hover:text-emerald underline focus:outline-none focus:ring-emerald">
+              (844) 674‑7577
+            </a>
+          </p>
+          <p className="text-gray-400 mt-2">
+            <a href="mailto:info@meridianstrategic.io" className="hover:text-emerald underline focus:outline-none focus:ring-emerald">
+              info@meridianstrategic.io
+            </a>
+          </p>
         </div>
       </div>
       <div className="border-t border-charcoal-700 py-4 text-center text-gray-600">
