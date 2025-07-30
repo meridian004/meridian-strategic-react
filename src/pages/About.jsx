@@ -6,21 +6,40 @@ import ceoImg from '../assets/ceo.jpg';
  * portrait, an animated quote and a simple timeline of milestones.
  */
 export default function About() {
+  // Updated timeline reflecting the actual incorporation and growth of Meridian Strategic
+  // Resources, LLC. Rather than fictional dates, this timeline starts with the
+  // company's formation in 2025 and tracks its early expansion into ESG contracting
+  // and federal proposal support.
   const timeline = [
-    { year: 2010, text: 'Founded in Riverside, CA with a vision for resilient systems' },
-    { year: 2015, text: 'Expanded to AI‑driven logistics and data analytics' },
-    { year: 2020, text: 'Awarded major defence and infrastructure contracts' },
-    { year: 2024, text: 'Certified SDVOSB and expanded global operations' },
+    {
+      year: 2025,
+      text:
+        'Meridian Strategic Resources, LLC is formed in Riverside, CA and obtains its EIN (39‑3020645)',
+    },
+    {
+      year: 2025,
+      text:
+        'Secures a City of Riverside business license and begins ESG contracting, janitorial kits and subcontractor logistics services',
+    },
+    {
+      year: 2026,
+      text:
+        'Expands into federal proposal support and data‑driven logistics for defence and infrastructure clients',
+    },
   ];
   return (
     <section className="pt-24 pb-16 bg-charcoal-900">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-3xl md:text-4xl mb-8 text-center">About Meridian Strategic</h2>
+        <h2 className="font-serif text-3xl md:text-4xl mb-8 text-center">
+          About Meridian Strategic
+        </h2>
         <div className="max-w-3xl mx-auto text-center mb-12">
           <p className="text-lg text-gray-300">
-            At Meridian Strategic we combine decades of experience with cutting‑edge AI to build smarter,
-            safer and more sustainable systems. We are committed to ethical innovation and resilient
-            design across defence, infrastructure and logistics.
+            Meridian Strategic Resources, LLC is a California‑registered limited liability company. We
+            combine decades of experience with cutting‑edge AI to support ESG contracting, janitorial
+            kit distribution, subcontractor logistics and federal proposal support for agencies. Our
+            mission is to harness strategic AI to build smarter, safer and more sustainable systems
+            that empower communities and create a resilient world.
           </p>
         </div>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
