@@ -1,40 +1,68 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import heroImg from '../assets/hero.webp';
+import smartCityImg from '../assets/smartcity.webp';
+import logisticsImg from '../assets/logistics.webp';
 
-// Import hero background image so Vite can process it
-import heroImage from '../assets/hero.jpg';
-
+/**
+ * Hero component renders the full‑screen landing section with a looping
+ * animated background. Calls to action are emphasised with button micro
+ * interactions and high contrast colours to maintain accessibility.
+ */
 export default function Hero() {
+  // Define slides for the hero carousel. Using WebP images keeps file size small.
+  const slides = [
+    { src: heroImg, alt: 'Autonomous drones over ocean at dusk' },
+    { src: smartCityImg, alt: 'Futuristic smart city powered by renewable energy' },
+    { src: logisticsImg, alt: 'Advanced logistics hub with robots, drones and trucks' },
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    // Respect user preference for reduced motion: if set, do not cycle slides.
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    const interval = setInterval(() => {
+      setIndex(i => (i + 1) % slides.length);
+    }, 8000); // change slide every 8 seconds
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   return (
-    <section className="relative h-screen flex items-center justify-center text-center pt-24" id="home">
-      {/* Background image */}
-      <img
-        src={heroImage}
-        alt="Autonomous drones over ocean"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-lightBlue/60 via-darkBlue/70 to-emerald/70" />
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          AI Strategies for a Safer World
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {slides.map((slide, i) => (
+        <img
+          key={i}
+          src={slide.src}
+          alt={slide.alt}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${i === index ? 'opacity-100' : 'opacity-0'}`}
+        />
+      ))}
+      {/* overlay gradient for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/70 to-charcoal/90 pointer-events-none" />
+      <div className="relative z-10 text-center px-4" role="presentation">
+        <h1 className="font-serif text-4xl md:text-6xl mb-6 leading-tight" id="home-title">
+          Strategic AI for a Resilient World
         </h1>
-        <p className="mb-8 text-lg sm:text-xl text-gray-300">
-          Harnessing artificial intelligence, data analytics and defence expertise to deliver mission‑critical solutions across land, sea and air.
+        <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 mb-8" id="home-subtitle">
+          Harnessing data, autonomy and logistics to transform defence and infrastructure.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <a
-            href="#contact"
-            className="bg-primary text-darkBlue font-medium px-6 py-3 rounded-md hover:bg-emerald transition-colors"
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link
+            to="/contact"
+            className="bg-emerald text-charcoal font-medium px-8 py-3 rounded shadow-lg transition-all duration-150 hover:scale-105 hover:underline focus:ring-2 focus:ring-emerald"
+            aria-label="Request a consultation"
           >
-            Schedule a Consultation
-          </a>
-          <a
-            href="#capabilities"
-            className="border border-primary text-primary font-medium px-6 py-3 rounded-md hover:bg-primary hover:text-darkBlue transition-colors"
+            Request Consultation
+          </Link>
+          <Link
+            to="/about"
+            className="bg-transparent border border-emerald text-emerald font-medium px-8 py-3 rounded transition-all duration-150 hover:bg-emerald hover:text-charcoal focus:ring-2 focus:ring-emerald"
+            aria-label="Learn more about Meridian Strategic"
           >
             Learn More
-          </a>
+          </Link>
         </div>
       </div>
     </section>
