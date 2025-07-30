@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logoImg from '../assets/logo.webp';
+// Import both WebP and PNG versions of the logo. The WebP is preferred for modern browsers
+// while the PNG serves as a fallback for older browsers that do not support WebP.
+// Import the final Meridian Strategic logo (shield + leaf) assets.
+// WebP is preferred for modern browsers while PNG serves as a fallback for older ones.
+import logoWebp from '../assets/logo_final.webp';
+import logoPng from '../assets/logo_final.png';
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
@@ -17,15 +22,20 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur border-b border-charcoal-700">
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
-        <Link to="/" className="flex items-center space-x-3 group">
-          {/* Use the official Meridian Strategic logo provided by the client. The image is sized to fit the header and includes a subtle hover effect. */}
-          <img
-            src={logoImg}
-            alt="Meridian Strategic logo"
-            className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
-          />
-          <span className="font-serif text-xl tracking-wide whitespace-nowrap">
-            Meridian Strategic
+        <Link to="/" className="flex items-center space-x-3 group" aria-label="Go to homepage">
+          {/* Render the shield + leaf logo via a <picture> element to support modern browsers (WebP) with a PNG fallback. */}
+          <picture className="h-10 w-auto">
+            <source srcSet={logoWebp} type="image/webp" />
+            <img
+              src={logoPng}
+              alt="Meridian Strategic logo — sustainable defense consulting"
+              className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+              loading="eager"
+            />
+          </picture>
+          {/* Use lowercase text for the company name to align with the brand system. */}
+          <span className="font-serif text-xl tracking-wide whitespace-nowrap lowercase">
+            meridian strategic
           </span>
         </Link>
         {/* Desktop navigation */}
