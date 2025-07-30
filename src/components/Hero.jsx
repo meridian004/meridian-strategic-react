@@ -1,11 +1,14 @@
 import React from 'react';
 
+// Import hero background image so Vite can process it
+import heroImage from '../assets/hero.jpg';
+
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center text-center pt-24" id="home">
       {/* Background image */}
       <img
-        src="/src/assets/hero.jpg"
+        src={heroImage}
         alt="Autonomous drones over ocean"
         className="absolute inset-0 w-full h-full object-cover"
       />
