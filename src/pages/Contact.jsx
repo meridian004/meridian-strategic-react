@@ -61,6 +61,23 @@ export default function Contact() {
             </button>
           </form>
           <div>
+            {/* Contact details shown above the Calendly embed. These are sourced from official filings
+               including the City of Riverside business license and EIN notice. */}
+            <div className="space-y-1 text-gray-400 text-sm mb-4">
+              <p>
+                <strong>Address:</strong> 8175 Limonite Avenue STE A, Riverside, CA 92509
+              </p>
+              <p>
+                <strong>Phone:</strong> (951) 636‑1145
+              </p>
+              <p>
+                <strong>Alt&nbsp;Phone:</strong> (844) 674‑7577
+              </p>
+              <p>
+                <strong>EIN:</strong> 39‑3020645
+              </p>
+            </div>
+            {/* Embedded Calendly scheduler */}
             <div className="relative w-full h-0 pb-[75%] rounded overflow-hidden">
               <iframe
                 src="https://calendly.com" // replace with actual Calendly link
