@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
+/* Global styles */
 body {
   @apply antialiased;
+}
+
+a {
+  @apply text-emerald hover:underline;
 }
