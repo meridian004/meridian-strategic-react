@@ -1,62 +1,96 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import logoImg from '../assets/logo.webp';
 
-// Import logo asset using ES module. Vite will copy this into the build
-import logo from '../assets/logo_ms_gradient.png';
-
-// Primary navigation component with responsive mobile menu
+/**
+ * Header component renders the top navigation bar with a logo and navigation links.
+ * It collapses into a hamburger menu on small screens.
+ */
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const toggleMenu = () => setOpen(!open);
+  const navLinks = [
+    { to: '/about', label: 'About' },
+    { to: '/sectors', label: 'Sectors' },
+    { to: '/insights', label: 'Insights' },
+    { to: '/contact', label: 'Contact' },
+  ];
   return (
-    <header className="fixed top-0 left-0 w-full bg-darkBlue/70 backdrop-blur-md border-b border-white/10 z-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <div className="flex items-center space-x-3">
-          {/* Logo image uses the imported asset so that it is processed by Vite */}
+    <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur border-b border-charcoal-700">
+      <nav className="container mx-auto flex items-center justify-between py-3 px-4">
+        <Link to="/" className="flex items-center space-x-3 group">
+          {/* Use the official Meridian Strategic logo provided by the client. The image is sized to fit the header and includes a subtle hover effect. */}
           <img
-            src={logo}
+            src={logoImg}
             alt="Meridian Strategic logo"
-            className="h-8 w-8"
+            className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
           />
-          <span className="font-semibold text-xl tracking-wide uppercase">
+          <span className="font-serif text-xl tracking-wide whitespace-nowrap">
             Meridian Strategic
           </span>
+        </Link>
+        {/* Desktop navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navLinks.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `transition-colors font-medium ${isActive ? 'text-emerald' : 'text-white hover:text-emerald'}`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
         </div>
-        <div className="hidden md:flex space-x-8">
-          <a href="#about" className="hover:text-primary transition-colors">About</a>
-          <a href="#capabilities" className="hover:text-primary transition-colors">Capabilities</a>
-          <a href="#industries" className="hover:text-primary transition-colors">Industries</a>
-          <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-        </div>
-        <button
-          className="md:hidden flex items-center justify-center focus:outline-none"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="flex items-center space-x-4">
+          <Link
+            to="/contact"
+            className="hidden md:inline-block bg-emerald text-charcoal font-medium px-5 py-2 rounded shadow-lg hover:scale-105 hover:underline transition-transform duration-150"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-            />
-          </svg>
-        </button>
+            Request Consultation
+          </Link>
+          <button
+            onClick={() => setOpen(prev => !prev)}
+            className="md:hidden inline-flex items-center justify-center p-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald rounded"
+            aria-label="Toggle navigation"
+          >
+            {open ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="6" y1="18" x2="18" y2="6" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
+        </div>
       </nav>
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-darkBlue border-t border-white/10">
-          <div className="px-4 py-4 space-y-2 flex flex-col">
-            <a href="#about" className="hover:text-primary transition-colors">About</a>
-            <a href="#capabilities" className="hover:text-primary transition-colors">Capabilities</a>
-            <a href="#industries" className="hover:text-primary transition-colors">Industries</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-          </div>
+        <div className="md:hidden bg-charcoal border-t border-charcoal-700 px-4 py-3 space-y-2">
+          {navLinks.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `block py-2 px-3 rounded transition-colors ${isActive ? 'bg-emerald text-charcoal' : 'text-white hover:bg-charcoal-800 hover:text-emerald'}`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="block bg-emerald text-charcoal text-center py-2 rounded font-medium hover:scale-105 hover:underline transition-transform duration-150"
+          >
+            Request Consultation
+          </Link>
         </div>
       )}
     </header>
