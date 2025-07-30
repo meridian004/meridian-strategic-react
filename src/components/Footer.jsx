@@ -16,9 +16,15 @@ export default function Footer() {
           <p className="text-gray-400">
             We deliver resilient AI‑driven solutions across defence, infrastructure and
             logistics. Our mission is to build a safer world through responsible
-            technology.
+            technology and ESG‑conscious innovation.
           </p>
-          <div className="mt-4 space-y-1 text-gray-500">
+          {/* Corporate information from official filings */}
+          <div className="mt-4 text-gray-500 space-y-1">
+            <p>Meridian Strategic Resources, LLC</p>
+            <p>EIN: 39‑3020645</p>
+            <p>Formed: Jul 3 2025 (CA)</p>
+          </div>
+          <div className="mt-3 space-y-1 text-gray-500">
             <p>UEI: QWERT1234</p>
             <p>CAGE: 1A2B3</p>
             <p>SDVOSB Certified</p>
@@ -46,7 +52,12 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="font-semibold text-lg mb-3">Contact</h4>
-          <p className="text-gray-400">Riverside, CA<br />United States</p>
+          <p className="text-gray-400">
+            8175 Limonite Avenue STE A<br />
+            Riverside, CA 92509
+          </p>
+          <p className="text-gray-400 mt-2">Phone: (951) 636‑1145</p>
+          <p className="text-gray-400">Alt: (844) 674‑7577</p>
           <p className="text-gray-400 mt-2">info@meridianstrategic.io</p>
         </div>
       </div>
