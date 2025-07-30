@@ -1,5 +1,7 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     './index.html',
     './src/**/*.{js,jsx,ts,tsx}',
@@ -7,14 +9,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#00bf8f',
-        secondary: '#007980',
-        darkBlue: '#0a192f',
-        lightBlue: '#023e8a',
-        emerald: '#00bf8f',
+        emerald: '#009E6D',
+        lapis: '#004AAD',
+        charcoal: '#0D1116',
+        gold: '#C9A34D',
+        gradientStart: '#009E6D',
+        gradientEnd: '#004AAD',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        serif: ['"DM Serif Display"', ...defaultTheme.fontFamily.serif],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
       },
     },
   },
