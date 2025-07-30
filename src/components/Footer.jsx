@@ -1,38 +1,57 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+/**
+ * Footer component provides company description, navigation links and contact info
+ * along with trust badges/registration identifiers. It spans full width and
+ * adjusts to multiple columns on larger screens.
+ */
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-darkBlue border-t border-white/10 py-10" id="contact">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-charcoal-900 border-t border-charcoal-700 text-sm">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4">
         <div>
-          <h3 className="font-semibold text-lg mb-4">Meridian Strategic</h3>
-          <p className="text-gray-400 text-sm">
-            AI‑driven strategy, data and defence support. We partner with public and private sector organisations to deliver mission‑critical outcomes through innovation and technology.
+          <h3 className="font-serif text-xl mb-4">Meridian Strategic</h3>
+          <p className="text-gray-400">
+            We deliver resilient AI‑driven solutions across defence, infrastructure and
+            logistics. Our mission is to build a safer world through responsible
+            technology.
           </p>
+          <div className="mt-4 space-y-1 text-gray-500">
+            <p>UEI: QWERT1234</p>
+            <p>CAGE: 1A2B3</p>
+            <p>SDVOSB Certified</p>
+          </div>
         </div>
         <div>
-          <h4 className="font-semibold mb-3">Company</h4>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#about" className="hover:text-primary">About Us</a></li>
-            <li><a href="#capabilities" className="hover:text-primary">Capabilities</a></li>
-            <li><a href="#industries" className="hover:text-primary">Industries</a></li>
-            <li><a href="#trust" className="hover:text-primary">Trust & Certifications</a></li>
+          <h4 className="font-semibold text-lg mb-3">Navigate</h4>
+          <ul className="space-y-2">
+            <li>
+              <Link to="/" className="hover:text-emerald">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-emerald">About</Link>
+            </li>
+            <li>
+              <Link to="/sectors" className="hover:text-emerald">Sectors</Link>
+            </li>
+            <li>
+              <Link to="/insights" className="hover:text-emerald">Insights</Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-emerald">Contact</Link>
+            </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-3">Contact</h4>
-          <p className="text-sm text-gray-400 mb-4">
-            123 Innovation Way<br />
-            Riverside, CA 92501<br />
-            United States
-          </p>
-          <p className="text-sm text-gray-400">
-            Email: <a href="mailto:info@meridianstrategic.io" className="hover:text-primary">info@meridianstrategic.io</a>
-          </p>
+          <h4 className="font-semibold text-lg mb-3">Contact</h4>
+          <p className="text-gray-400">Riverside, CA<br />United States</p>
+          <p className="text-gray-400 mt-2">info@meridianstrategic.io</p>
         </div>
       </div>
-      <div className="mt-8 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Meridian Strategic. All rights reserved.
+      <div className="border-t border-charcoal-700 py-4 text-center text-gray-600">
+        &copy; {year} Meridian Strategic. All rights reserved.
       </div>
     </footer>
   );
