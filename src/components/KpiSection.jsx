@@ -21,9 +21,35 @@ function useCountUp(target, duration = 2500) {
 }
 
 function CountUpCard({ title, target }) {
-  const count = useCountUp(target);
+  /**
+   * Each card observes its own visibility in the viewport. We delay the start
+   * of the count‑up animation until the card is at least 30% visible. This
+   * prevents animations from running off‑screen and improves performance.
+   */
+  const ref = React.useRef(null);
+  const [inView, setInView] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      entries => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  const count = useCountUp(inView ? target : 0);
   return (
-    <div className="bg-charcoal-800 rounded-lg p-6 shadow-lg hover:shadow-emerald/40 transition-shadow duration-300">
+    <div
+      ref={ref}
+      className="bg-charcoal-800 rounded-lg p-6 shadow-lg hover:shadow-emerald/40 transition-shadow duration-300"
+    >
       <div className="text-4xl font-semibold text-emerald mb-2">{count}+</div>
       <div className="text-gray-300 font-medium">{title}</div>
     </div>
