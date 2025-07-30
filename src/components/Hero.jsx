@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import heroImg from '../assets/hero.webp';
-import smartCityImg from '../assets/smartcity.webp';
-import logisticsImg from '../assets/logistics.webp';
+// Import the latest hero images showcasing diverse defence and sustainability scenarios.
+import heroScuba from '../assets/hero_scuba.webp';
+import heroAmphibious from '../assets/hero_amphibious.webp';
+import heroMarsColony from '../assets/hero_mars_colony.webp';
+import heroSustainable from '../assets/hero_sustainable.webp';
+import heroAirSea from '../assets/hero_air_sea.webp';
 
 /**
  * Hero component renders the full‑screen landing section with a looping
@@ -12,10 +15,28 @@ import logisticsImg from '../assets/logistics.webp';
  */
 export default function Hero() {
   // Define slides for the hero carousel. Using WebP images keeps file size small.
+  // Define slides for the hero carousel using the new set of scenes.
   const slides = [
-    { src: heroImg, alt: 'Autonomous drones over ocean at dusk' },
-    { src: smartCityImg, alt: 'Futuristic smart city powered by renewable energy' },
-    { src: logisticsImg, alt: 'Advanced logistics hub with robots, drones and trucks' },
+    {
+      src: heroScuba,
+      alt: 'Elite seal scuba team emerging from the surf with AI sentry robots, quadruped support units and a scanning drone',
+    },
+    {
+      src: heroAmphibious,
+      alt: 'Amphibious AI boats escorting a naval destroyer with aerial drones providing overwatch',
+    },
+    {
+      src: heroSustainable,
+      alt: 'Sustainable construction site with versatile robotic attachments building green infrastructure alongside engineers',
+    },
+    {
+      src: heroMarsColony,
+      alt: 'Mars colony under construction as robots and astronauts build habitats powered by solar arrays',
+    },
+    {
+      src: heroAirSea,
+      alt: 'Stealth aircraft hovering above the coast with amphibious AI support units emerging from the sea',
+    },
   ];
   const [index, setIndex] = useState(0);
 
