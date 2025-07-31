@@ -14,8 +14,12 @@ import { Link, NavLink } from 'react-router-dom';
 // represents the defence and sustainability mission, and the wordmark spells out
 // the company name.  They are stored in src/assets with the original filenames
 // the client supplied.  Despite the long names, Vite will handle them correctly.
-import logoShield from '../assets/ChatGPT Image Jul 30, 2025, 10_51_23 PM.png';
-import logoWordmark from '../assets/ChatGPT Image Jul 30, 2025, 11_31_08 PM.png';
+// Import the official full brand asset that combines the shield and wordmark.
+// This PNG displays the gradient shield alongside the lowercase "meridian strategic"
+// logotype exactly as provided by the client.  Per brand guidelines, we must use
+// this single-line version for the header and not split the assets or apply
+// any modifications.  Keep the original filename to reference the uploaded file.
+import logoFull from '../assets/meridian-strategic-text.png';
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
@@ -37,26 +41,14 @@ export default function Header() {
           separation while ensuring the gradient shield and wordmark remain legible. */}
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center" aria-label="Go to homepage">
-          {/* Render the official shield icon followed by the wordmark.  We preserve the
-              individual assets exactly as provided (no AI re‑mixing or restyling).  The
-              images are aligned horizontally with a small gap to create a single
-              unified logo. */}
-          <div className="flex items-center space-x-2">
-            <img
-              src={logoShield}
-              alt="Meridian Strategic shield logo"
-              className="h-10 w-auto select-none"
-              draggable="false"
-              loading="eager"
-            />
-            <img
-              src={logoWordmark}
-              alt="Meridian Strategic wordmark"
-              className="h-10 w-auto select-none"
-              draggable="false"
-              loading="eager"
-            />
-          </div>
+          {/* Render the combined shield and wordmark as a single flat asset. */}
+          <img
+            src={logoFull}
+            alt="Meridian Strategic logo"
+            className="h-16 w-auto select-none"
+            draggable="false"
+            loading="eager"
+          />
         </Link>
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-8">
