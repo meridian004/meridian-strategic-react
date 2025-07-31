@@ -9,7 +9,13 @@ import { Link, NavLink } from 'react-router-dom';
 // exactly as provided by the client.  We use the PNG exclusively per brand
 // instructions; no WebP or alternative formats are loaded to avoid unintended
 // substitutions or styling changes.
-import logoFullPng from '../assets/meridian-logo-horizontal.png';
+// Import the official Meridian Strategic shield and wordmark provided by the client.
+// These assets must be used as‑is without any modifications or stacking.  The shield
+// represents the defence and sustainability mission, and the wordmark spells out
+// the company name.  They are stored in src/assets with the original filenames
+// the client supplied.  Despite the long names, Vite will handle them correctly.
+import logoShield from '../assets/ChatGPT Image Jul 30, 2025, 10_51_23 PM.png';
+import logoWordmark from '../assets/ChatGPT Image Jul 30, 2025, 11_31_08 PM.png';
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
@@ -23,21 +29,34 @@ export default function Header() {
     { to: '/insights', label: 'Insights' },
     { to: '/contact', label: 'Contact' },
   ];
+
   return (
-        {/* The header background is slightly more transparent (bg-charcoal/70) to improve contrast
-             against the dark logo asset.  Maintaining a backdrop blur and border for visual
-             separation while ensuring the gradient shield and wordmark remain legible. */}
-        <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/70 backdrop-blur border-b border-charcoal-700">
+    <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/70 backdrop-blur border-b border-charcoal-700">
+      {/* The header background is slightly more transparent (bg-charcoal/70) to improve contrast
+          against the dark logo asset.  Maintaining a backdrop blur and border for visual
+          separation while ensuring the gradient shield and wordmark remain legible. */}
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center" aria-label="Go to homepage">
-          {/* Use the provided horizontal brand asset containing the shield and logotype. */}
-          <img
-            src={logoFullPng}
-            alt="Meridian Strategic logo"
-            className="h-16 w-auto select-none"
-            draggable="false"
-            loading="eager"
-          />
+          {/* Render the official shield icon followed by the wordmark.  We preserve the
+              individual assets exactly as provided (no AI re‑mixing or restyling).  The
+              images are aligned horizontally with a small gap to create a single
+              unified logo. */}
+          <div className="flex items-center space-x-2">
+            <img
+              src={logoShield}
+              alt="Meridian Strategic shield logo"
+              className="h-10 w-auto select-none"
+              draggable="false"
+              loading="eager"
+            />
+            <img
+              src={logoWordmark}
+              alt="Meridian Strategic wordmark"
+              className="h-10 w-auto select-none"
+              draggable="false"
+              loading="eager"
+            />
+          </div>
         </Link>
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-8">
