@@ -4,10 +4,12 @@ import { Link, NavLink } from 'react-router-dom';
 // while the PNG serves as a fallback for older browsers that do not support WebP.
 // Import the final Meridian Strategic logo (shield + leaf) assets.
 // WebP is preferred for modern browsers while PNG serves as a fallback for older ones.
-// Import the consolidated Meridian Strategic logo (shield + wordmark).
-// Per brand guidelines, only the supplied PNG should be used here. WebP or
-// alternative formats are not loaded to avoid inadvertent substitutions.
-import logoFullPng from '../assets/meridian-strategic-text.png';
+// Import the consolidated Meridian Strategic logo (shield + wordmark).  This asset
+// contains the gradient shield alongside the lowercase "meridian strategic" logotype
+// exactly as provided by the client.  We use the PNG exclusively per brand
+// instructions; no WebP or alternative formats are loaded to avoid unintended
+// substitutions or styling changes.
+import logoFullPng from '../assets/meridian-logo-horizontal.png';
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
