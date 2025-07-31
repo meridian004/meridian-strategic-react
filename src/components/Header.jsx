@@ -24,7 +24,10 @@ export default function Header() {
     { to: '/contact', label: 'Contact' },
   ];
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur border-b border-charcoal-700">
+        {/* The header background is slightly more transparent (bg-charcoal/70) to improve contrast
+             against the dark logo asset.  Maintaining a backdrop blur and border for visual
+             separation while ensuring the gradient shield and wordmark remain legible. */}
+        <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/70 backdrop-blur border-b border-charcoal-700">
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center" aria-label="Go to homepage">
           {/* Use the provided horizontal brand asset containing the shield and logotype. */}
