@@ -4,8 +4,10 @@ import { Link, NavLink } from 'react-router-dom';
 // while the PNG serves as a fallback for older browsers that do not support WebP.
 // Import the final Meridian Strategic logo (shield + leaf) assets.
 // WebP is preferred for modern browsers while PNG serves as a fallback for older ones.
-import logoWebp from '../assets/logo_final.webp';
-import logoPng from '../assets/logo_final.png';
+// Import the consolidated Meridian Strategic logo (shield + wordmark).
+// Per brand guidelines, only the supplied PNG should be used here. WebP or
+// alternative formats are not loaded to avoid inadvertent substitutions.
+import logoFullPng from '../assets/meridian-strategic-text.png';
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
@@ -22,24 +24,15 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur border-b border-charcoal-700">
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
-        <Link to="/" className="flex items-center space-x-3 group" aria-label="Go to homepage">
-          {/* Render the shield + leaf logo via a <picture> element to support modern browsers (WebP) with a PNG fallback. */}
-          <picture className="h-10 w-auto">
-            <source srcSet={logoWebp} type="image/webp" />
-            <img
-              src={logoPng}
-              alt="Meridian Strategic shield logo"
-              className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
-              loading="eager"
-            />
-          </picture>
-          {/* Use lowercase text for the company name to align with the brand system. Apply a subtle gradient to the text to echo the brand's emerald and lapis palette. */}
-          <span
-            className="font-display text-xl md:text-2xl tracking-wide whitespace-nowrap lowercase bg-gradient-to-r from-emerald via-blue-500 to-emerald bg-clip-text text-transparent"
-            aria-label="Meridian Strategic"
-          >
-            meridian strategic
-          </span>
+        <Link to="/" className="flex items-center" aria-label="Go to homepage">
+          {/* Use the provided horizontal brand asset containing the shield and logotype. */}
+          <img
+            src={logoFullPng}
+            alt="Meridian Strategic logo"
+            className="h-16 w-auto select-none"
+            draggable="false"
+            loading="eager"
+          />
         </Link>
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center space-x-8">
