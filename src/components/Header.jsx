@@ -28,13 +28,16 @@ export default function Header() {
             <source srcSet={logoWebp} type="image/webp" />
             <img
               src={logoPng}
-              alt="Meridian Strategic logo — sustainable defense consulting"
+              alt="Meridian Strategic shield logo"
               className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
               loading="eager"
             />
           </picture>
-          {/* Use lowercase text for the company name to align with the brand system. */}
-          <span className="font-serif text-xl tracking-wide whitespace-nowrap lowercase">
+          {/* Use lowercase text for the company name to align with the brand system. Apply a subtle gradient to the text to echo the brand's emerald and lapis palette. */}
+          <span
+            className="font-display text-xl md:text-2xl tracking-wide whitespace-nowrap lowercase bg-gradient-to-r from-emerald via-blue-500 to-emerald bg-clip-text text-transparent"
+            aria-label="Meridian Strategic"
+          >
             meridian strategic
           </span>
         </Link>

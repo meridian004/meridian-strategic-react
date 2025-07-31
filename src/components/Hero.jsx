@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // Import the latest hero images showcasing diverse defence and sustainability scenarios.
-import heroScuba from '../assets/hero_scuba.webp';
-import heroAmphibious from '../assets/hero_amphibious.webp';
-import heroMarsColony from '../assets/hero_mars_colony.webp';
-import heroSustainable from '../assets/hero_sustainable.webp';
-import heroAirSea from '../assets/hero_air_sea.webp';
+// Import a new suite of hero images aligned to Meridian Strategic’s latest narrative.
+import heroConstruction from '../assets/hero_construction.webp';
+import heroMarsAI from '../assets/hero_mars_ai.webp';
+import heroSealDrones from '../assets/hero_seal_drones.webp';
+import heroDatacenter from '../assets/hero_datacenter.webp';
+import heroSemiconductor from '../assets/hero_semiconductor.webp';
 
 /**
  * Hero component renders the full‑screen landing section with a looping
@@ -18,24 +19,24 @@ export default function Hero() {
   // Define slides for the hero carousel using the new set of scenes.
   const slides = [
     {
-      src: heroScuba,
-      alt: 'Elite seal scuba team emerging from the surf with AI sentry robots, quadruped support units and a scanning drone',
+      src: heroConstruction,
+      alt: 'AI-powered construction site with autonomous robots and solar panels building sustainable infrastructure',
     },
     {
-      src: heroAmphibious,
-      alt: 'Amphibious AI boats escorting a naval destroyer with aerial drones providing overwatch',
+      src: heroMarsAI,
+      alt: 'Mars colony under construction with autonomous robots, solar arrays and holographic AI interface lines over a red landscape',
     },
     {
-      src: heroSustainable,
-      alt: 'Sustainable construction site with versatile robotic attachments building green infrastructure alongside engineers',
+      src: heroSealDrones,
+      alt: 'Special forces silhouettes arriving on a beach at dusk with amphibious vehicles and autonomous sentry drones overhead',
     },
     {
-      src: heroMarsColony,
-      alt: 'Mars colony under construction as robots and astronauts build habitats powered by solar arrays',
+      src: heroDatacenter,
+      alt: 'Futuristic warehouse combining data centre racks and conveyor belts sorting fresh produce with robotic arms',
     },
     {
-      src: heroAirSea,
-      alt: 'Stealth aircraft hovering above the coast with amphibious AI support units emerging from the sea',
+      src: heroSemiconductor,
+      alt: 'Modern semiconductor fabrication facility with robotic arms and AI sensors monitoring wafers',
     },
   ];
   const [index, setIndex] = useState(0);
@@ -60,14 +61,21 @@ export default function Hero() {
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${i === index ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}
-      {/* overlay gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/70 to-charcoal/90 pointer-events-none" />
+      {/* overlay gradient for readability: lighten slightly to showcase hero imagery while maintaining contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/60 to-charcoal/80 pointer-events-none" />
       <div className="relative z-10 text-center px-4" role="presentation">
-        <h1 className="font-serif text-4xl md:text-6xl mb-6 leading-tight" id="home-title">
-          Strategic AI for a Resilient World
+        {/* Updated headline and tagline for Meridian Strategic */}
+        <h1
+          className="font-display text-4xl md:text-6xl mb-6 leading-tight"
+          id="home-title"
+        >
+          <span className="text-emerald">Strategic Excellence</span> for Sustainable Growth
         </h1>
-        <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 mb-8" id="home-subtitle">
-          Harnessing data, autonomy and logistics to transform defence and infrastructure.
+        <p
+          className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 mb-8"
+          id="home-subtitle"
+        >
+          Driving intelligent infrastructure, AI-enabled systems, and sustainable public-sector innovation.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link
