@@ -19,7 +19,14 @@ import { Link, NavLink } from 'react-router-dom';
 // logotype exactly as provided by the client.  Per brand guidelines, we must use
 // this single-line version for the header and not split the assets or apply
 // any modifications.  Keep the original filename to reference the uploaded file.
-import logoFull from '../assets/meridian-strategic-text.png';
+// Note: We no longer import a bundled logo asset here.  Per brand
+// requirements, the header must display the client‑provided gradient shield
+// and lowercase wordmark exactly as separate assets, without any
+// re‑interpretation or renaming.  These images live in the public/
+// directory so they can be referenced by their original filenames (which
+// include spaces and punctuation).  We reference them via root‑relative
+// URLs encoded with percent escapes to handle spaces and commas.  See
+// the JSX below for details.
 
 /**
  * Header component renders the top navigation bar with a logo and navigation links.
@@ -35,17 +42,27 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/70 backdrop-blur border-b border-charcoal-700">
+    <header className="fixed top-0 left-0 w-full z-50 bg-charcoal/50 backdrop-blur border-b border-charcoal-700">
       {/* The header background is slightly more transparent (bg-charcoal/70) to improve contrast
           against the dark logo asset.  Maintaining a backdrop blur and border for visual
           separation while ensuring the gradient shield and wordmark remain legible. */}
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center" aria-label="Go to homepage">
-          {/* Render the combined shield and wordmark as a single flat asset. */}
+          {/* Render the client‑provided shield and wordmark as separate images
+              side by side.  These files live in the public/ directory and
+              therefore can be referenced with root‑relative URLs.  Use
+              percent encoding to escape spaces and commas in the filenames. */}
           <img
-            src={logoFull}
-            alt="Meridian Strategic logo"
-            className="h-16 w-auto select-none"
+            src="/ChatGPT%20Image%20Jul%2030,%202025,%2010_51_23%20PM.png"
+            alt="Meridian Strategic shield logo"
+            className="h-14 w-auto select-none"
+            draggable="false"
+            loading="eager"
+          />
+          <img
+            src="/ChatGPT%20Image%20Jul%2030,%202025,%2011_31_08%20PM.png"
+            alt="Meridian Strategic wordmark"
+            className="h-10 w-auto select-none ml-2"
             draggable="false"
             loading="eager"
           />
